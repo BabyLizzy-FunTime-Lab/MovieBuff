@@ -1,0 +1,74 @@
+:root {
+	/*kleuren*/
+	--kleur-snow: rgb(255, 250, 250);
+	--kleur-whitesmoke: rgb(245,245,245);
+	--kleur-steelblue: rgb(70,130,180);
+	--kleur-dodgerblue: rgb(30,144,255);
+	--kleur-menu-highlight: rgba(105, 105, 105, 0.9);
+	--kleur-schaduw: rgba(0, 0, 0, 0.2);
+	--kleur-gainsboro: rgb(220,220,220);
+	--kleur-lichtzwart: hsl(0, 0%, 15%);
+	--kleur-lichtgrijs: rgb(112, 112, 110);
+	/*Decoratie beelden*/
+	--image-banner: url(../Images/banner.jpg) ;
+}
+
+html, body {
+	scroll-behavior: smooth;
+	scroll-padding-top: 5em;
+	background-color: black;
+}
+h2, h3, button {
+	font-family: 'Orbitron', sans-serif;
+}
+p, form {
+	font-family: 'Roboto', sans-serif;
+}
+#top--header {
+	position: sticky;
+	top: 0;
+	background-color: black;
+	z-index: 9999;
+}
+.header--container {
+	font-family: 'Orbitron', sans-serif;
+	background-color: black;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 9999;
+}
+.header__logo {
+	height: 3em;
+	width: 13em;
+	margin: auto;
+	border: 1px solid black;
+	background-color: black;
+	text-align: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.header__logo h1 {
+	color: white;
+	font-size: 2em;
+	margin: .2em 0 .2em 0;
+}
+.header__logo a {
+	text-decoration: none;
+}
+.header__nav {
+	text-align: center;
+}
+main {
+	height: 100vh;
+	background-color: var(--kleur-whitesmoke);
+	display: flow-root;
+}
+#banner {
+	height: calc(100vh - 4em);
+	background-image: var(--image-banner);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center 30%;
+	/*margin-bottom: 1em;*/
+}
