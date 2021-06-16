@@ -57,10 +57,14 @@ p, form {
 	text-decoration: none;
 }
 .header__nav {
-	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0;
+	padding: 0 0 .5em 0;
 }
 main {
-	height: 100vh;
+	/*min-height: 100vh;*/
 	background-color: var(--kleur-whitesmoke);
 	display: flow-root;
 }
@@ -70,5 +74,8 @@ main {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center 30%;
-	/*margin-bottom: 1em;*/
+}
+footer {
+	height: 7em;
+	background-color: black;
 }
