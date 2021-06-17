@@ -66,6 +66,8 @@ p, form {
 main {
 	/*min-height: 100vh;*/
 	background-color: var(--kleur-whitesmoke);
+	max-width: 40em;
+	margin: 0 auto 0 auto;
 	display: flow-root;
 }
 #banner {
