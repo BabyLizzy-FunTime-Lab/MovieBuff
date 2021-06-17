@@ -74,33 +74,82 @@ function getRequest_Promise(url) {
 		xhttp.send();
 	}
 )};
-	
-// Data processing functions
+function run_getRequest(requestURL) {
+	getRequest_Promise(requestURL).then(
+		function(values) {
+			// console.log(values);
+			let ID_URLarray = top5_URL_array(values);
+			Promise.all([
+				getRequest_Promise(ID_URLarray[0]),
+				getRequest_Promise(ID_URLarray[1]),
+				getRequest_Promise(ID_URLarray[2]),
+				getRequest_Promise(ID_URLarray[3]),
+				getRequest_Promise(ID_URLarray[4]),
+			]).then(
+				function(values) {
+					// console.log(values);
+					let test_res = JSON.parse(values[0]);
+					console.log(test_res);
+				}
+			)
+		},
+		function(err) {
+			console.log(err);
+		}
+	)
+}
+// Data processing functions, filter-out unwanted data
 
+// Featured Movies
+
+function get_featuredMovies(movie1_ID, movie2_ID) {
+	let search_URL_1 = createURL(movie1_ID, "ID");
+	let search_URL_2 = createURL(movie2_ID, "ID");
+	Promise.all([
+		getRequest_Promise(search_URL_1),
+		getRequest_Promise(search_URL_2)
+	]).then(
+		function(values) {
+			let movie_1 = JSON.parse(values[0]);
+			let movie_2 = JSON.parse(values[1]);
+			// Call render function
+			console.log(movie_1);
+			console.log(movie_2);
+		}
+	)
+}
+function render_searchResult(argument) {
+	// body...
+}
+//onload get 2 movies and render info
+window.onload = get_featuredMovies("tt1343727", "tt0103064");
 	
 // eventhandeling
 elementId("search_btn").addEventListener("click", function() {
 	let requestURL = createURL(elementValue("search_input"), "string");
-	getRequest_Promise(requestURL).then(
-			function(values) {
-				// console.log(values);
-				let ID_URLarray = top5_URL_array(values);
-				Promise.all([
-					getRequest_Promise(ID_URLarray[0]),
-					getRequest_Promise(ID_URLarray[1]),
-					getRequest_Promise(ID_URLarray[2]),
-					getRequest_Promise(ID_URLarray[3]),
-					getRequest_Promise(ID_URLarray[4]),
-				]).then(
-					function(values) {
-						console.log(values);
-					}
-				)
-			},
-			function(err) {
-				console.log(err);
-			}
-		)
+	run_getRequest(requestURL);
+	// getRequest_Promise(requestURL).then(
+	// 		function(values) {
+	// 			// console.log(values);
+	// 			let ID_URLarray = top5_URL_array(values);
+	// 			Promise.all([
+	// 				getRequest_Promise(ID_URLarray[0]),
+	// 				getRequest_Promise(ID_URLarray[1]),
+	// 				getRequest_Promise(ID_URLarray[2]),
+	// 				getRequest_Promise(ID_URLarray[3]),
+	// 				getRequest_Promise(ID_URLarray[4]),
+	// 			]).then(
+	// 				function(values) {
+	// 					// console.log(values);
+	// 					let test_res = JSON.parse(values[0]);
+	// 					console.log(test_res);
+	// 				}
+	// 			)
+	// 		},
+	// 		function(err) {
+	// 			console.log(err);
+	// 		}
+	// 	)
 })
 
 
