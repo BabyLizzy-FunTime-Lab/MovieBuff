@@ -10,7 +10,7 @@
 	--kleur-lichtzwart: hsl(0, 0%, 15%);
 	--kleur-lichtgrijs: rgb(112, 112, 110);
 	/*Decoratie beelden*/
-	--image-banner: url(../Images/banner.jpg) ;
+	--image-banner: url(../Images/banner3.png) ;
 }
 
 html, body {
@@ -70,19 +70,20 @@ p {
 	margin: 0;
 	padding: 0 0 .5em 0;
 }
+#banner {
+	height: calc(100vh - 4em);
+	background-image: var(--image-banner);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 8.5% 30%;
+}
 main {
 	background-color: var(--kleur-whitesmoke);
 	max-width: 40em;
 	margin: 0 auto 0 auto;
 	display: flow-root;
 }
-#banner {
-	height: calc(100vh - 4em);
-	background-image: var(--image-banner);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center 30%;
-}
+
 #featuredmovies {
 	padding: 0 .5em 0 .5em;
 }

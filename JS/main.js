@@ -171,7 +171,7 @@ function render_featuredMovies_Data(movie_1, movie_2) {
 				movie2_info_container.appendChild(movie2_elements[i]);
 				break;
 			default:
-				console.log("Rendering problem.");
+				console.log("Rendering Featured Movies, done");
 		}
 	}
 	movie1_container.appendChild(movie1_info_container);
