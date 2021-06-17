@@ -3,8 +3,20 @@ function elementValue(ID) {
 	let value = document.getElementById(ID).value;
 	return value;
 }
-function elementId(naam) {
+function elementID(naam) {
 	return document.getElementById(naam);
+}
+function elementMaker(tagname, ID_optional, class_optional) {
+	let newElement = document.createElement(tagname);
+	if (ID_optional) {
+		newElement.setAttribute("id", ID_optional);
+		return newElement;
+	} else if (class_optional) {
+		newElement.setAttribute("class", class_optional);
+		return newElement;
+	} else {
+		return newElement;
+	}
 }
 
 // Get request functions and URL constructors
@@ -100,9 +112,15 @@ function run_getRequest(requestURL) {
 }
 // Data processing functions, filter-out unwanted data
 
-// Featured Movies
-
-function get_featuredMovies(movie1_ID, movie2_ID) {
+// Get Featured Movies & Render
+function render_featuredMovies_Data(movie_1, movie_2) {
+	let target_container = elementID("featuredmovies");
+	let poster = elementMaker("img", "poster");
+	let info_container = elementMaker("div", "info_container")
+	poster.src = movie_1.Poster;
+	target_container.appendChild(poster);
+}
+function featuredMovies(movie1_ID, movie2_ID) {
 	let search_URL_1 = createURL(movie1_ID, "ID");
 	let search_URL_2 = createURL(movie2_ID, "ID");
 	Promise.all([
@@ -112,20 +130,29 @@ function get_featuredMovies(movie1_ID, movie2_ID) {
 		function(values) {
 			let movie_1 = JSON.parse(values[0]);
 			let movie_2 = JSON.parse(values[1]);
+			let movie_array = new Array(movie_1, movie_2);
+			return movie_array;
+			// console.log(movie_1);
+			// console.log(movie_2);
+		}
+	).then(
+		function(values) {
 			// Call render function
-			console.log(movie_1);
-			console.log(movie_2);
+			render_featuredMovies_Data(values[0], values[1]);
 		}
 	)
 }
-function render_searchResult(argument) {
-	// body...
+
+// Render Search Results
+function filter_searchResults(argument) {
+	// body..
 }
 //onload get 2 movies and render info
-window.onload = get_featuredMovies("tt1343727", "tt0103064");
+// First render containers.
+window.onload = featuredMovies("tt1343727", "tt0103064");
 	
 // eventhandeling
-elementId("search_btn").addEventListener("click", function() {
+elementID("search_btn").addEventListener("click", function() {
 	let requestURL = createURL(elementValue("search_input"), "string");
 	run_getRequest(requestURL);
 	// getRequest_Promise(requestURL).then(
