@@ -38,7 +38,6 @@ function top5_URL_array(res) {
 	let response_obj = JSON.parse(res);
 	switch(response_obj.Response) {
 		case "True":
-			// console.log("getRequest obj: " + response_obj);
 			// GET top 5 movie ID's and make new URL's with movie ID's.
 			let array_ID_URL = [];
 			for (var i = 0; i < 5; i++) {
@@ -113,12 +112,72 @@ function run_getRequest(requestURL) {
 // Data processing functions, filter-out unwanted data
 
 // Get Featured Movies & Render
+function generate_featuredMovies_elements() {	
+	let poster = elementMaker("img", false, "poster");
+	let info_container = elementMaker("div", false, "info_container");
+	let title = elementMaker("h3", false, "title");
+	let year = elementMaker("h4", false, "year");
+	let plot = elementMaker("div", false, "plot");
+	let awards = elementMaker("div", false, "awards");
+	
+	let element_array = new Array(poster, title, year, plot, awards, info_container);
+	return element_array;	 
+}
 function render_featuredMovies_Data(movie_1, movie_2) {
 	let target_container = elementID("featuredmovies");
-	let poster = elementMaker("img", "poster");
-	let info_container = elementMaker("div", "info_container")
-	poster.src = movie_1.Poster;
-	target_container.appendChild(poster);
+	let movie1_container = elementMaker("section", false, "movie_container");
+	let movie2_container = elementMaker("section", false, "movie_container");
+
+	let movie1_elements = generate_featuredMovies_elements();
+	let movie1_info_container = movie1_elements[5];
+	let movie2_elements = generate_featuredMovies_elements();
+	let movie2_info_container = movie2_elements[5];
+
+	for (var i = 0; i < movie1_elements.length; i++) {
+		switch(i) {
+			case 0:
+			// Posters
+				movie1_elements[i].src = movie_1.Poster;
+				movie1_container.appendChild(movie1_elements[0]);
+				movie2_elements[i].src = movie_2.Poster;
+				movie2_container.appendChild(movie2_elements[0]);
+				break;
+			case 1:
+			// Title <h3> into info_container
+				movie1_elements[i].innerHTML = "Title: " + movie_1.Title;
+				movie1_info_container.appendChild(movie1_elements[i]);
+				movie2_elements[i].innerHTML = "Title:" + movie_2.Title;
+				movie2_info_container.appendChild(movie2_elements[i]);
+				break;
+			case 2:
+			// Year <h4> into info_container
+				movie1_elements[i].innerHTML = "Release year: " + movie_1.Year;
+				movie1_info_container.appendChild(movie1_elements[i]);
+				movie2_elements[i].innerHTML = "Release year: " + movie_2.Year;
+				movie2_info_container.appendChild(movie2_elements[i]);
+				break;
+			case 3:
+			// Plot into info_container
+				movie1_elements[i].innerHTML = "<h4>Plot:</h4>" + "<p>" + movie_1.Plot + "</p>";
+				movie1_info_container.appendChild(movie1_elements[i]);
+				movie2_elements[i].innerHTML = "<h4>Plot:</h4>" + "<p>" + movie_2.Plot + "</p>";
+				movie2_info_container.appendChild(movie2_elements[i]);
+				break;
+			case 4:
+			// Awards into info_container
+				movie1_elements[i].innerHTML = "<h4>Awards:</h4>" + "<p>" + movie_1.Awards + "</p>";
+				movie1_info_container.appendChild(movie1_elements[i]);
+				movie2_elements[i].innerHTML = "<h4>Awards:</h4>" + "<p>" + movie_2.Awards + "</p>";
+				movie2_info_container.appendChild(movie2_elements[i]);
+				break;
+			default:
+				console.log("Rendering problem.");
+		}
+	}
+	movie1_container.appendChild(movie1_info_container);
+	movie2_container.appendChild(movie2_info_container);
+	target_container.appendChild(movie1_container);
+	target_container.appendChild(movie2_container);
 }
 function featuredMovies(movie1_ID, movie2_ID) {
 	let search_URL_1 = createURL(movie1_ID, "ID");
@@ -148,35 +207,12 @@ function filter_searchResults(argument) {
 	// body..
 }
 //onload get 2 movies and render info
-// First render containers.
 window.onload = featuredMovies("tt1343727", "tt0103064");
 	
 // eventhandeling
 elementID("search_btn").addEventListener("click", function() {
 	let requestURL = createURL(elementValue("search_input"), "string");
 	run_getRequest(requestURL);
-	// getRequest_Promise(requestURL).then(
-	// 		function(values) {
-	// 			// console.log(values);
-	// 			let ID_URLarray = top5_URL_array(values);
-	// 			Promise.all([
-	// 				getRequest_Promise(ID_URLarray[0]),
-	// 				getRequest_Promise(ID_URLarray[1]),
-	// 				getRequest_Promise(ID_URLarray[2]),
-	// 				getRequest_Promise(ID_URLarray[3]),
-	// 				getRequest_Promise(ID_URLarray[4]),
-	// 			]).then(
-	// 				function(values) {
-	// 					// console.log(values);
-	// 					let test_res = JSON.parse(values[0]);
-	// 					console.log(test_res);
-	// 				}
-	// 			)
-	// 		},
-	// 		function(err) {
-	// 			console.log(err);
-	// 		}
-	// 	)
 })
 
 
