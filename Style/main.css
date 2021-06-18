@@ -83,7 +83,11 @@ main {
 	margin: 0 auto 0 auto;
 	display: flow-root;
 }
-
+#searchresults {
+	display: none;
+	padding: 0 .5em 0 .5em;
+	min-height: calc(100vh - 4em);
+}
 #featuredmovies {
 	padding: 0 .5em 0 .5em;
 }
@@ -94,6 +98,8 @@ main {
 }
 .poster {
 	flex: 1 0 50%;
+	background-color: grey;
+	min-height: 28em;
 }
 .info_container {
 	flex: 1 0 50%;

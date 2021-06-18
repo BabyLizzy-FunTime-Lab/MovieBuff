@@ -85,6 +85,71 @@ function getRequest_Promise(url) {
 		xhttp.send();
 	}
 )};
+
+// Get Search Results & Render
+function search_elements() {
+	let poster = elementMaker("img", false, "poster");
+	let info_container = elementMaker("div", false, "info_container");
+	let title = elementMaker("h3", false, "title");
+	let year = elementMaker("h4", false, "year");
+	let genra = elementMaker("p", false, "genra");
+	let type = elementMaker("p", false, "type");
+	let director = elementMaker("p", false, "director");
+	let plot = elementMaker("div", false, "plot");
+	let actors = elementMaker("div", false, "actors");
+	let awards = elementMaker("div", false, "awards");
+
+	let search_element_array = new Array(
+		poster, title, year, genra, 
+		type, director, plot, actors, 
+		awards, info_container);
+	return search_element_array;
+}
+function render_search(values) {
+	let target_container = elementID("searchresults");	
+	let movie1_container = elementMaker("section", false, "movie_container");
+	let movie2_container = elementMaker("section", false, "movie_container");
+	let movie3_container = elementMaker("section", false, "movie_container");
+	let movie4_container = elementMaker("section", false, "movie_container");
+	let movie5_container = elementMaker("section", false, "movie_container");
+
+	let movie1_elements = search_elements();
+	let movie1_info_container = movie1_elements[5];
+	let movie2_elements = search_elements();
+	let movie2_info_container = movie2_elements[5];
+	let movie3_elements = search_elements();
+	let movie3_info_container = movie3_elements[5];
+	let movie4_elements = search_elements();
+	let movie4_info_container = movie4_elements[5];
+	let movie5_elements = search_elements();
+	let movie5_info_container = movie5_elements[5];
+
+
+	for (var i = 0; i < values.length; i++) {
+		switch(i) {
+			case 0:
+			// Poster
+				movie1_elements[i].src = values[0].Poster;
+				movie1_container.appendChild(movie1_elements[i]);
+				movie2_elements[i].src = values[1].Poster;
+				movie2_container.appendChild(movie2_elements[i]);
+				movie3_elements[i].src = values[2].Poster;
+				movie3_container.appendChild(movie3_elements[i]);
+				movie4_elements[i].src = values[3].Poster;
+				movie4_container.appendChild(movie4_elements[i]);
+				movie5_elements[i].src = values[4].Poster;
+				movie5_container.appendChild(movie5_elements[i]);
+				break;
+		}
+	}
+
+
+	target_container.appendChild(movie1_container);
+	target_container.appendChild(movie2_container);
+	target_container.appendChild(movie3_container);
+	target_container.appendChild(movie4_container);
+	target_container.appendChild(movie5_container);
+}
 function run_getRequest(requestURL) {
 	getRequest_Promise(requestURL).then(
 		function(values) {
@@ -98,9 +163,22 @@ function run_getRequest(requestURL) {
 				getRequest_Promise(ID_URLarray[4]),
 			]).then(
 				function(values) {
-					// console.log(values);
-					let test_res = JSON.parse(values[0]);
-					console.log(test_res);
+					let movie1 = JSON.parse(values[0]);
+					let movie2 = JSON.parse(values[1]);
+					let movie3 = JSON.parse(values[2]);
+					let movie4 = JSON.parse(values[3]);
+					let movie5 = JSON.parse(values[4]);
+					let movie_data = new Array(
+						movie1, movie2, movie3, 
+						movie4, movie5);
+					// console.log(movie_data);
+					return movie_data;
+				}
+			).then(
+				function(values) {
+					console.log(values[4]);
+					// if poster "n/a" render special img.
+					render_search(values);
 				}
 			)
 		},
@@ -109,7 +187,8 @@ function run_getRequest(requestURL) {
 		}
 	)
 }
-// Data processing functions, filter-out unwanted data
+
+
 
 // Get Featured Movies & Render
 function generate_featuredMovies_elements() {	
@@ -202,15 +281,16 @@ function featuredMovies(movie1_ID, movie2_ID) {
 	)
 }
 
-// Render Search Results
-function filter_searchResults(argument) {
-	// body..
-}
 //onload get 2 movies and render info
 window.onload = featuredMovies("tt1343727", "tt0103064");
 	
 // eventhandeling
 elementID("search_btn").addEventListener("click", function() {
+	elementID("banner").style.display = "none";
+	elementID("featuredmovies").style.display = "none";
+	elementID("searchresults").style.display = "block";
+
+
 	let requestURL = createURL(elementValue("search_input"), "string");
 	run_getRequest(requestURL);
 })
