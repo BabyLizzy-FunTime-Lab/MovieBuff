@@ -74,6 +74,9 @@ function getRequest_Promise(url) {
 							break;
 						case "False":
 							console.log(response_obj.Error);
+							let error = elementMaker("div", "notfound", false);
+							error.innerHTML = "<h2>Sorry</h2>" + "<h3>" + response_obj.Error + " Please try again.</h3>";
+							elementID("searchresults").appendChild(error);
 							break;
 						default:
 							console.log("Get request failed.");
@@ -127,7 +130,7 @@ function render_search(result_1, result_2, result_3, result_4, result_5) {
 	function availability_check(movie_data, poster) {
 		if (poster) {
 			if (movie_data === "N/A") {
-				let sorryposter = "../MovieBuff/Images/sorry.gif";
+				let sorryposter = "../MovieBuff/Images/sorry1.png";
 				return sorryposter
 			} else {
 				return movie_data;
