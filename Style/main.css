@@ -99,7 +99,8 @@ main {
 .poster {
 	flex: 1 0 50%;
 	background-color: grey;
-	min-height: 28em;
+	/*min-height: 28em;*/
+	max-width: 100%;
 }
 .info_container {
 	flex: 1 0 50%;
