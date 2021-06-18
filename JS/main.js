@@ -99,15 +99,15 @@ function search_elements() {
 	let info_container = elementMaker("div", false, "info_container");
 	let title = elementMaker("h3", false, "title");
 	let year = elementMaker("h4", false, "year");
-	let genra = elementMaker("p", false, "genra");
-	let type = elementMaker("p", false, "type");
-	let director = elementMaker("p", false, "director");
+	let genre = elementMaker("div", false, "genre");
+	let type = elementMaker("div", false, "type");
+	let director = elementMaker("div", false, "director");
 	let plot = elementMaker("div", false, "plot");
 	let actors = elementMaker("div", false, "actors");
 	let awards = elementMaker("div", false, "awards");
 
 	let search_element_array = new Array(
-		poster, title, year, genra, 
+		poster, title, year, genre, 
 		type, director, plot, actors, 
 		awards, info_container);
 	return search_element_array;
@@ -178,93 +178,93 @@ function render_search(result_1, result_2, result_3, result_4, result_5) {
 				break;
 			case 2:
 			// Year
-				movie1_elements[i].innerHTML = availability_check(result_1.Year, false);
+				movie1_elements[i].innerHTML = "Release year: " + availability_check(result_1.Year, false);
 				movie1_info_container.appendChild(movie1_elements[i]);
-				movie2_elements[i].innerHTML = availability_check(result_2.Year, false);
+				movie2_elements[i].innerHTML = "Release year: " + availability_check(result_2.Year, false);
 				movie2_info_container.appendChild(movie2_elements[i]);
-				movie3_elements[i].innerHTML = availability_check(result_3.Year, false);
+				movie3_elements[i].innerHTML = "Release year: " + availability_check(result_3.Year, false);
 				movie3_info_container.appendChild(movie3_elements[i]);
-				movie4_elements[i].innerHTML = availability_check(result_4.Year, false);
+				movie4_elements[i].innerHTML = "Release year: " + availability_check(result_4.Year, false);
 				movie4_info_container.appendChild(movie4_elements[i]);
-				movie5_elements[i].innerHTML = availability_check(result_5.Year, false);
+				movie5_elements[i].innerHTML = "Release year: " + availability_check(result_5.Year, false);
 				movie5_info_container.appendChild(movie5_elements[i]);
 				break;
 			case 3:
 			// Genre
-				movie1_elements[i].innerHTML = availability_check(result_1.Genre, false);
+				movie1_elements[i].innerHTML = "<h4>Genre:</h4>" + "<p>" + availability_check(result_1.Genre, false) + "</p>";
 				movie1_info_container.appendChild(movie1_elements[i]);
-				movie2_elements[i].innerHTML = availability_check(result_2.Genre, false);
+				movie2_elements[i].innerHTML = "<h4>Genre:</h4>" + "<p>" + availability_check(result_2.Genre, false) + "</p>";
 				movie2_info_container.appendChild(movie2_elements[i]);
-				movie3_elements[i].innerHTML = availability_check(result_3.Genre, false);
+				movie3_elements[i].innerHTML = "<h4>Genre:</h4>" + "<p>" + availability_check(result_3.Genre, false) + "</p>";
 				movie3_info_container.appendChild(movie3_elements[i]);
-				movie4_elements[i].innerHTML = availability_check(result_4.Genre, false);
+				movie4_elements[i].innerHTML = "<h4>Genre:</h4>" + "<p>" + availability_check(result_4.Genre, false) + "</p>";
 				movie4_info_container.appendChild(movie4_elements[i]);
-				movie5_elements[i].innerHTML = availability_check(result_5.Genre, false);
+				movie5_elements[i].innerHTML = "<h4>Genre:</h4>" + "<p>" + availability_check(result_5.Genre, false) + "</p>";
 				movie5_info_container.appendChild(movie5_elements[i]);
 				break;
 			case 4:
 			// Type
-				movie1_elements[i].innerHTML = availability_check(result_1.Type, false);
+				movie1_elements[i].innerHTML = "<h4>Type:</h4>" + "<p>" + availability_check(result_1.Type, false) + "</p>";
 				movie1_info_container.appendChild(movie1_elements[i]);
-				movie2_elements[i].innerHTML = availability_check(result_2.Type, false);
+				movie2_elements[i].innerHTML = "<h4>Type:</h4>" + "<p>" + availability_check(result_2.Type, false) + "</p>";
 				movie2_info_container.appendChild(movie2_elements[i]);
-				movie3_elements[i].innerHTML = availability_check(result_3.Type, false);
+				movie3_elements[i].innerHTML = "<h4>Type:</h4>" + "<p>" + availability_check(result_3.Type, false) + "</p>";
 				movie3_info_container.appendChild(movie3_elements[i]);
-				movie4_elements[i].innerHTML = availability_check(result_4.Type, false);
+				movie4_elements[i].innerHTML = "<h4>Type:</h4>" + "<p>" + availability_check(result_4.Type, false) + "</p>";
 				movie4_info_container.appendChild(movie4_elements[i]);
-				movie5_elements[i].innerHTML = availability_check(result_5.Type, false);
+				movie5_elements[i].innerHTML = "<h4>Type:</h4>" + "<p>" + availability_check(result_5.Type, false) + "</p>";
 				movie5_info_container.appendChild(movie5_elements[i]);
 				break;
 			case 5:
 			// Director
-				movie1_elements[i].innerHTML = availability_check(result_1.Director, false);
+				movie1_elements[i].innerHTML = "<h4>Director(s):</h4>" + "<p>" + availability_check(result_1.Director, false) + "</p>";
 				movie1_info_container.appendChild(movie1_elements[i]);
-				movie2_elements[i].innerHTML = availability_check(result_2.Director, false);
+				movie2_elements[i].innerHTML = "<h4>Director(s):</h4>" + "<p>" + availability_check(result_2.Director, false) + "</p>";
 				movie2_info_container.appendChild(movie2_elements[i]);
-				movie3_elements[i].innerHTML = availability_check(result_3.Director, false);
+				movie3_elements[i].innerHTML = "<h4>Director(s):</h4>" + "<p>" + availability_check(result_3.Director, false) + "</p>";
 				movie3_info_container.appendChild(movie3_elements[i]);
-				movie4_elements[i].innerHTML = availability_check(result_4.Director, false);
+				movie4_elements[i].innerHTML = "<h4>Director(s):</h4>" + "<p>" + availability_check(result_4.Director, false) + "</p>";
 				movie4_info_container.appendChild(movie4_elements[i]);
-				movie5_elements[i].innerHTML = availability_check(result_5.Director, false);
+				movie5_elements[i].innerHTML = "<h4>Director(s):</h4>" + "<p>" + availability_check(result_5.Director, false) + "</p>";
 				movie5_info_container.appendChild(movie5_elements[i]);
 				break;
 			case 6:
 			// Plot
-				movie1_elements[i].innerHTML = availability_check(result_1.Plot, false);
+				movie1_elements[i].innerHTML = "<h4>Plot:</h4>" + "<p>" + availability_check(result_1.Plot, false) + "</p>";
 				movie1_info_container.appendChild(movie1_elements[i]);
-				movie2_elements[i].innerHTML = availability_check(result_2.Plot, false);
+				movie2_elements[i].innerHTML = "<h4>Plot:</h4>" + "<p>" + availability_check(result_2.Plot, false) + "</p>";
 				movie2_info_container.appendChild(movie2_elements[i]);
-				movie3_elements[i].innerHTML = availability_check(result_3.Plot, false);
+				movie3_elements[i].innerHTML = "<h4>Plot:</h4>" + "<p>" + availability_check(result_3.Plot, false) + "</p>";
 				movie3_info_container.appendChild(movie3_elements[i]);
-				movie4_elements[i].innerHTML = availability_check(result_4.Plot, false);
+				movie4_elements[i].innerHTML = "<h4>Plot:</h4>" + "<p>" + availability_check(result_4.Plot, false) + "</p>";
 				movie4_info_container.appendChild(movie4_elements[i]);
-				movie5_elements[i].innerHTML = availability_check(result_5.Plot, false);
+				movie5_elements[i].innerHTML = "<h4>Plot:</h4>" + "<p>" + availability_check(result_5.Plot, false) + "</p>";
 				movie5_info_container.appendChild(movie5_elements[i]);
 				break;
 			case 7:
 			// Actors
-				movie1_elements[i].innerHTML = availability_check(result_1.Actors, false);
+				movie1_elements[i].innerHTML = "<h4>Actors:</h4>" + "<p>" + availability_check(result_1.Actors, false) + "</p>";
 				movie1_info_container.appendChild(movie1_elements[i]);
-				movie2_elements[i].innerHTML = availability_check(result_2.Actors, false);
+				movie2_elements[i].innerHTML = "<h4>Actors:</h4>" + "<p>" + availability_check(result_2.Actors, false) + "</p>";
 				movie2_info_container.appendChild(movie2_elements[i]);
-				movie3_elements[i].innerHTML = availability_check(result_3.Actors, false);
+				movie3_elements[i].innerHTML = "<h4>Actors:</h4>" + "<p>" + availability_check(result_3.Actors, false) + "</p>";
 				movie3_info_container.appendChild(movie3_elements[i]);
-				movie4_elements[i].innerHTML = availability_check(result_4.Actors, false);
+				movie4_elements[i].innerHTML = "<h4>Actors:</h4>" + "<p>" + availability_check(result_4.Actors, false) + "</p>";
 				movie4_info_container.appendChild(movie4_elements[i]);
-				movie5_elements[i].innerHTML = availability_check(result_5.Actors, false);
+				movie5_elements[i].innerHTML = "<h4>Actors:</h4>" + "<p>" + availability_check(result_5.Actors, false) + "</p>";
 				movie5_info_container.appendChild(movie5_elements[i]);
 				break;
 			case 8:
 			// Awards
-				movie1_elements[i].innerHTML = availability_check(result_1.Awards, false);
+				movie1_elements[i].innerHTML = "<h4>Awards:</h4>" + "<p>" + availability_check(result_1.Awards, false) + "</p>";
 				movie1_info_container.appendChild(movie1_elements[i]);
-				movie2_elements[i].innerHTML = availability_check(result_2.Awards, false);
+				movie2_elements[i].innerHTML = "<h4>Awards:</h4>" + "<p>" + availability_check(result_2.Awards, false) + "</p>";
 				movie2_info_container.appendChild(movie2_elements[i]);
-				movie3_elements[i].innerHTML = availability_check(result_3.Awards, false);
+				movie3_elements[i].innerHTML = "<h4>Awards:</h4>" + "<p>" + availability_check(result_3.Awards, false) + "</p>";
 				movie3_info_container.appendChild(movie3_elements[i]);
-				movie4_elements[i].innerHTML = availability_check(result_4.Awards, false);
+				movie4_elements[i].innerHTML = "<h4>Awards:</h4>" + "<p>" + availability_check(result_4.Awards, false) + "</p>";
 				movie4_info_container.appendChild(movie4_elements[i]);
-				movie5_elements[i].innerHTML = availability_check(result_5.Awards, false);
+				movie5_elements[i].innerHTML = "<h4>Awards:</h4>" + "<p>" + availability_check(result_5.Awards, false) + "</p>";
 				movie5_info_container.appendChild(movie5_elements[i]);
 				break;
 			default:
@@ -415,8 +415,6 @@ function featuredMovies(movie1_ID, movie2_ID) {
 			let movie_2 = JSON.parse(values[1]);
 			let movie_array = new Array(movie_1, movie_2);
 			return movie_array;
-			// console.log(movie_1);
-			// console.log(movie_2);
 		}
 	).then(
 		function(values) {
@@ -431,48 +429,7 @@ window.onload = featuredMovies("tt1343727", "tt0103064");
 	
 // eventhandeling
 elementID("search_btn").addEventListener("click", function() {
-	// elementID("banner").style.display = "none";
-	// elementID("featuredmovies").style.display = "none";
-	// elementID("searchresults").style.display = "block";
-
 	let requestURL = createURL(elementValue("search_input"), "string");
 	run_getRequest(requestURL);
 })
 
-
-
-
-
-// function getRequest(url) {
-// 	let xhttp;
-// 	if (window.XMLHttpRequest) {
-// 		xhttp = new XMLHttpRequest();
-// 	} else {
-// 		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-// 	}
-// 	// Get request
-// 	xhttp.open("GET", url, true);
-// 	xhttp.send();
-// 	// Handle response
-// 	xhttp.onreadystatechange = function() {
-// 		if (xhttp.readyState == 4 && xhttp.status == 200) {
-// 			let response_obj = JSON.parse(xhttp.responseText);
-// 			switch(response_obj.Response) {
-// 				case "True":
-// 					console.log("getRequest obj: " +response_obj);
-// 					return response_obj;
-// 					break;
-// 				case "False":
-// 					console.log(response_obj.Error);
-// 					break;
-// 				default:
-// 					console.log("Get request failed.");	
-// 			}
-// 			// check response for true or false & err message.
-// 		} else if (xhttp.status == 500) {
-// 			console.log("Search query was rejected by server.");
-// 		} else {
-// 			console.log("Working....");
-// 		}
-// 	}
-// }
