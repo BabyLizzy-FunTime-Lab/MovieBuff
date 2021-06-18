@@ -134,7 +134,7 @@ function render_search(result_1, result_2, result_3, result_4, result_5) {
 	function availability_check(movie_data, poster) {
 		if (poster) {
 			if (movie_data === "N/A") {
-				let sorryposter = "../MovieBuff/Images/sorry1.png";
+				let sorryposter = "../MovieBuff/Images/sorry.gif";
 				return sorryposter
 			} else {
 				return movie_data;
