@@ -66,16 +66,20 @@ function getRequest_Promise(url) {
 		xhttp.open("GET", url, true);
 		xhttp.onload = function() {
 			if (xhttp.status == 200) {
-				succes(xhttp.responseText);
 				let response_obj = JSON.parse(xhttp.responseText);
 					switch(response_obj.Response) {
 						case "True":
 							console.log("getRequest obj worked.");
+							succes(xhttp.responseText);
 							break;
 						case "False":
 							console.log(response_obj.Error);
+							elementID("banner").style.display = "none";
+							elementID("featuredmovies").style.display = "none";
+							elementID("searchresults").style.display = "block";
 							let error = elementMaker("div", "notfound", false);
 							error.innerHTML = "<h2>Sorry</h2>" + "<h3>" + response_obj.Error + " Please try again.</h3>";
+							elementID("searchresults").innerHTML = "";
 							elementID("searchresults").appendChild(error);
 							break;
 						default:
@@ -274,6 +278,7 @@ function render_search(result_1, result_2, result_3, result_4, result_5) {
 	movie4_container.appendChild(movie4_info_container);
 	movie5_container.appendChild(movie5_info_container);
 
+	elementID("searchresults").innerHTML = "<h2>Top 5 Results:</h2>";
 	target_container.appendChild(movie1_container);
 	target_container.appendChild(movie2_container);
 	target_container.appendChild(movie3_container);
@@ -306,8 +311,11 @@ function run_getRequest(requestURL) {
 				}
 			).then(
 				function(values) {
-					console.log(values[4]);
+					console.log(values[0]);
 					// if poster "n/a" render special img.
+					elementID("banner").style.display = "none";
+					elementID("featuredmovies").style.display = "none";
+					elementID("searchresults").style.display = "block";
 					render_search(values[0], values[1], values[2], values[3], values[4]);
 				}
 			)
@@ -416,10 +424,9 @@ window.onload = featuredMovies("tt1343727", "tt0103064");
 	
 // eventhandeling
 elementID("search_btn").addEventListener("click", function() {
-	elementID("banner").style.display = "none";
-	elementID("featuredmovies").style.display = "none";
-	elementID("searchresults").style.display = "block";
-
+	// elementID("banner").style.display = "none";
+	// elementID("featuredmovies").style.display = "none";
+	// elementID("searchresults").style.display = "block";
 
 	let requestURL = createURL(elementValue("search_input"), "string");
 	run_getRequest(requestURL);
