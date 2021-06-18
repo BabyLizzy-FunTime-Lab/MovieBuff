@@ -322,6 +322,13 @@ function run_getRequest(requestURL) {
 		},
 		function(err) {
 			console.log(err);
+			elementID("banner").style.display = "none";
+			elementID("featuredmovies").style.display = "none";
+			elementID("searchresults").style.display = "block";
+			let error = elementMaker("div", "notfound", false);
+			error.innerHTML = "<h2>Sorry</h2>" + "<h3>" + err + " Please try again.</h3>";
+			elementID("searchresults").innerHTML = "";
+			elementID("searchresults").appendChild(error);
 		}
 	)
 }
