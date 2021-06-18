@@ -10,19 +10,26 @@
 	--kleur-lichtzwart: hsl(0, 0%, 15%);
 	--kleur-lichtgrijs: rgb(112, 112, 110);
 	/*Decoratie beelden*/
-	--image-banner: url(../Images/banner.jpg) ;
+	--image-banner: url(../Images/banner3.png) ;
 }
 
 html, body {
 	scroll-behavior: smooth;
 	scroll-padding-top: 5em;
-	background-color: black;
+	background-color: var(--kleur-whitesmoke);
 }
-h2, h3, button {
+h2, h3, h4, button {
 	font-family: 'Orbitron', sans-serif;
 }
-p, form {
+h3 {
+	margin: 1em 0 0 0;
+}
+h4 {
+	margin: .3em 0 0 0;
+}
+p {
 	font-family: 'Roboto', sans-serif;
+	margin: 0;
 }
 #top--header {
 	position: sticky;
@@ -63,17 +70,49 @@ p, form {
 	margin: 0;
 	padding: 0 0 .5em 0;
 }
-main {
-	/*min-height: 100vh;*/
-	background-color: var(--kleur-whitesmoke);
-	display: flow-root;
-}
 #banner {
 	height: calc(100vh - 4em);
 	background-image: var(--image-banner);
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: center 30%;
+	background-position: 8.5% 30%;
+}
+main {
+	background-color: var(--kleur-whitesmoke);
+	max-width: 40em;
+	margin: 0 auto 0 auto;
+	display: flow-root;
+}
+#searchresults {
+	display: none;
+	padding: 0 .5em 0 .5em;
+	min-height: calc(100vh - 4em);
+}
+#featuredmovies {
+	padding: 0 .5em 0 .5em;
+}
+.movie_container {
+	margin: 0 0 2.5em 0;
+	display: flex;
+	flex-wrap: wrap;
+}
+.poster {
+	flex: 1 0 50%;
+	background-color: grey;
+	max-height: 30em;
+	max-width: 100%;
+	width: 15em;
+}
+.info_container {
+	flex: 1 0 50%;
+	padding: 0 .5em 0 .5em;
+	box-sizing: border-box;
+}
+.type h4, p {
+	display: inline-block;
+}
+.type h4 {
+	margin-right: .3em;
 }
 footer {
 	height: 7em;
