@@ -24,10 +24,10 @@ function createURL(search_input, string_or_ID) {
 	let url;
 	switch(string_or_ID) {
 		case "string": 
-			url = "http://www.omdbapi.com/?s=" + search_input + "&apiKey=6c3a2d45";
+			url = "http://www.omdbapi.com/?s=" + search_input + "&apiKey=3bdd0276";
 			break;
 		case "ID": 
-			url = "http://www.omdbapi.com/?i=" + search_input + "&apiKey=6c3a2d45";
+			url = "http://www.omdbapi.com/?i=" + search_input + "&apiKey=3bdd0276";
 			break;
 		default:
 			console.log("Failed to create URL");
